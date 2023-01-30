@@ -1,0 +1,28 @@
+{
+  "parkingdb": [
+    {
+      "id": 1,
+      "name": "one",
+      "address": "one",
+      "lat": "abc",
+      "lng": "one",
+      "slot": 0
+    },
+    {
+      "id": 2,
+      "name": "two",
+      "address": "two",
+      "lat": "two",
+      "lng": "two",
+      "slot": 0
+    },
+    {
+      "id": 3,
+      "name": "three",
+      "address": "three",
+      "lat": "three",
+      "lng": "three",
+      "slot": 0
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+
+<div class="container my-5">
+  <h3 class="mb-3"> Parkings</h3>
+  <a routerLink="../parkingadd">
+    <button class="btn mb-5 btn-primary"><i class="fa fa-plus"></i>&nbsp; Add Parking</button>
+  </a>
+  <table class="table " *ngIf="allParkingData && allParkingData.length > 0">
+    <thead>
+      <th>Sr No.</th>
+      <th>Parking</th>
+      <th>Address</th>
+      <th>Lat - Lon</th>
+      <th>Action</th>
+    </thead>
+    <tbody >
+      <tr *ngFor="let parking of allParkingData;index as i" >
+        <td>{{i+1}}</td>
+        <td>{{parking.name}}</td>
+        <td>{{parking.address}}</td>
+        <td>{{parking.lat}} - {{parking.lng}}</td>
+        <td>
+          <button class="btn btn-secondary mx-2" [routerLink]="['../parkingedit',parking.id]" ><i class='fa fa-edit'></i> Edit </button>
+          <button class="btn btn-danger mx-2" (click)="onDelete(parking.id)"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!(allParkingData  && allParkingData.length > 0)">
+    No Customers Found
+  </p>
+</div>

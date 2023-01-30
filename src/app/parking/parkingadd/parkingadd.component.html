@@ -1,0 +1,39 @@
+
+<div class="container my-5">
+  <h3>Add Parking Form</h3>
+
+  <div class="row">
+    <div class="col-6 mt-2">
+      <form >
+        <div class="form-group">
+          <label for="name" class="form-label">Parking Name</label>
+          <input type="text" [(ngModel)]="formData.name" class="form-control" id="name" placeholder="Enter Parking Name"
+            name="name" #name>
+        </div>
+        <div class="form-group">
+          <label for="address" class="form-label">Parking Address</label>
+          <input type="text" [(ngModel)]="formData.address" class="form-control" id="address" placeholder="Enter Parking Address"
+            name="address" #address>
+        </div>
+        <div class="form-group">
+          <label for="slot" class="form-label">Total Slots</label>
+          <input type="text"[(ngModel)]="formData.slot"  class="form-control" id="slot" placeholder="Total Slots"
+            name="slot"  #slot>
+        </div>
+        <div class="row " >
+          <div class="form-group col-6">
+            <label for="lat" class="form-label">Latitude</label>
+            <input type="text" [(ngModel)]="formData.lat" class="form-control" id="lat" placeholder="Latitude"
+            name="lat" #lat>
+          </div>
+          <div class="form-group col-6">
+            <label for="lng" class="form-label">Longitude</label>
+            <input type="text" [(ngModel)]="formData.lng" class="form-control" id="lng" placeholder="Longitude"
+            name="lng" #lng>
+          </div>
+        </div>
+        <button type="submit" (click)="postParking()" class="btn btn-primary mt-2">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
