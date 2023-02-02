@@ -9,7 +9,15 @@ import { ParkingaddComponent } from './parking/parkingadd/parkingadd.component';
 import { ParkinglistComponent } from './parking/parkinglist/parkinglist.component';
 import { ParkinghomeComponent } from './parking/parkinghome/parkinghome.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AngMaterialComponent } from './material/ang-material/ang-material.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +26,21 @@ import { FormsModule } from '@angular/forms';
     ParkingeditComponent,
     ParkingaddComponent,
     ParkinglistComponent,
-    ParkinghomeComponent
+    ParkinghomeComponent,
+    AngMaterialComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
