@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -9,7 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AngMaterialComponent {
 
-  constructor(public formBuilder: FormBuilder,private toastr: ToastrService){
+  constructor(public formBuilder: FormBuilder,
+              private toastr: ToastrService,
+              private http: HttpClient){
 
   }
   ParkingForm = new FormGroup({
@@ -22,6 +25,10 @@ export class AngMaterialComponent {
 
   onSubmit(){
     console.log(this.ParkingForm.value);
+    this.http.post('https://ssipex-alpha-default-rtdb.firebaseio.com/parking.json',this.ParkingForm.value).
+    subscribe(res =>{
+      console.log(res);
+    })
     this.ParkingForm.reset();
     this.toastr.success('Success', 'Data Submitted Successfully',{timeOut:3000});
   }
