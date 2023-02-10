@@ -23,7 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './material/login/login.component';
 import { AngularFireModule} from '@angular/fire/compat';
-import { MapComponent } from './material/map/map.component'
+import { MapComponent } from './material/map/map.component';
+import { SlotComponent } from './slot/slot.component'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MapComponent } from './material/map/map.component'
     AngMaterialComponent,
     LoginComponent,
     MapComponent,
+    SlotComponent,
   ],
   entryComponents: [LoginComponent ],
   imports: [
