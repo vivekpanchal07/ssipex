@@ -4,5 +4,11 @@ export class Parking{
   address:string;
   lat:string;
   lng:string;
-  slot:number;
+  slots:number;
+}
+export class User{
+  id?: string;
+  name: string;
+  password: string;
+  role: string;
 }

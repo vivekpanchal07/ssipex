@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
 import { Parking } from './parkings';
 
 @Component({
@@ -19,6 +21,7 @@ export class AngMaterialComponent implements OnInit {
   isLoading: boolean = false;
   editMode: boolean = false;
   currentParkingID:string = "";
+  newparking:any;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,17 +29,21 @@ export class AngMaterialComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               private toastr: ToastrService,
-              private http: HttpClient){
+              private http: HttpClient,
+              private dialog: MatDialog ){
 
 
   }
   ParkingForm = new FormGroup({
     name: new FormControl(),
     address: new FormControl(),
-    slot: new FormControl(),
+    slots: new FormControl(),
     lat:new FormControl(),
     lng:new FormControl(),
   })
+
+  slotInfo = [{slotNo: 1,slotStatus: 'open'},{slotNo: 2,slotStatus: 'open'},{slotNo: 3,slotStatus: 'open'},
+          {slotNo: 4,slotStatus: 'open'},{slotNo: 5,slotStatus: 'open'}]
 
   ngOnInit(): void {
     this.fetchParking();
@@ -48,11 +55,19 @@ export class AngMaterialComponent implements OnInit {
 
     if(!this.editMode){
       console.log(this.ParkingForm.value);
-      this.http.post<{name:string}>('https://ssipex-alpha-default-rtdb.firebaseio.com/parking.json',this.ParkingForm.value).
+      this.http.post('https://ssipex-alpha-default-rtdb.firebaseio.com/parking.json',this.ParkingForm.value).
       subscribe(res =>{
-      console.log(res);
-      this.fetchParking();
+        this.newparking = res;
+        // console.log(this.newparking.name+' added');
+        this.fetchParking();
       })
+      this.http.put('https://ssipex-alpha-default-rtdb.firebaseio.com/parking/'+this.newparking.name+'.json',this.slotInfo).
+      subscribe(
+        res =>{
+          {this.fetchParking();}
+        }
+      );
+
       this.ParkingForm.reset();
       this.toastr.success('Success', 'Data Submitted Successfully',{timeOut:3000});
     }else{
@@ -93,7 +108,7 @@ export class AngMaterialComponent implements OnInit {
     this.ParkingForm.setValue({
       name: currentParking.name,
       address: currentParking.address,
-      slot: currentParking.slot,
+      slots: currentParking.slots,
       lat: currentParking.lat,
       lng:currentParking.lng,
     })
@@ -102,6 +117,10 @@ export class AngMaterialComponent implements OnInit {
   resetForm(){
     this.editMode = false;
     this.ParkingForm.reset();
+  }
+
+  bookslot(){
+    this.dialog.open(LoginComponent);
   }
 
   private fetchParking():void {
@@ -125,5 +144,5 @@ export class AngMaterialComponent implements OnInit {
       this.isLoading = false;
     })
   }
-
+  
 }

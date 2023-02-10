@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,7 +20,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginComponent } from './material/login/login.component';
+import { AngularFireModule} from '@angular/fire/compat';
+import { MapComponent } from './material/map/map.component'
 
 @NgModule({
   declarations: [
@@ -31,8 +33,11 @@ import { MatButtonModule } from '@angular/material/button';
     ParkingaddComponent,
     ParkinglistComponent,
     ParkinghomeComponent,
-    AngMaterialComponent
+    AngMaterialComponent,
+    LoginComponent,
+    MapComponent,
   ],
+  entryComponents: [LoginComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,6 +54,18 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+    MatDialogModule,
+    AngularFireModule.initializeApp({
+        apiKey: "AIzaSyANMwip7EjdUBwQYPO-idCIfvA8L1MGW04",
+        authDomain: "ssipex-alpha.firebaseapp.com",
+        databaseURL: "https://ssipex-alpha-default-rtdb.firebaseio.com",
+        projectId: "ssipex-alpha",
+        storageBucket: "ssipex-alpha.appspot.com",
+        messagingSenderId: "766361033187",
+        appId: "1:766361033187:web:777f1451723a1e3ca2e8d6",
+        measurementId: "G-BW6K140XCY"
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
