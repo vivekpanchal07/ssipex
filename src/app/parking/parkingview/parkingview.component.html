@@ -1,0 +1,13 @@
+<mat-card>
+  <h3 mat-dialog-title> QR Code for Parking Booking </h3>
+  <mat-card-content align="center">
+    <qrcode
+      [qrdata]="myAngularxQrCode"
+      [width]="256"
+      [errorCorrectionLevel]="'M'">
+    </qrcode>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-card-actions>
+</mat-card>

@@ -3,9 +3,7 @@
       <h3 mat-dialog-title> Slot Booking Detail </h3>
 
       <mat-card-content >
-        <!-- {{data.modalParkingId}} -->
-
-        <form  [formGroup]="SlotForm" (ngSubmit)="onSubmit()" class="form-container col-md-12 ">
+        <form  [formGroup]="SlotForm" class="form-container col-md-12 ">
           <mat-card>
             <mat-card-content>
               <div class="row mt-3">
@@ -30,28 +28,24 @@
                     <mat-label>Phone No.</mat-label>
                     <input formControlName="phoneNo" matInput ngModel>
                   </mat-form-field>
-                  <button class="btn btn-secondary mx-2">Get OTP</button>
+                  <button class="btn btn-secondary mx-2" (click)="getOTP()">Get OTP</button>
                 </div>
               </div>
               <div class="col-md-12" *ngIf="otpInputShow" >
                 <mat-form-field appearance="outline" class="full-width col-md-12">
                   <mat-label>Enter OTP</mat-label>
-                  <input formControlName="otp" matInput ngModel >
+                  <input matInput ngModel [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
               </div>
             </mat-card-content>
 
             <mat-card-actions>
-              <button type="submit" class="btn btn-primary">Confirm Booking</button>
+              <button type="submit" class="btn btn-primary" (click)="submit()" >Confirm Booking</button>
+              <!-- <button type="submit" class="btn btn-primary" (click)="getSlotDetailByPhone('9714084146')" >Fetch Slots</button> -->
               <button class="btn btn-secondary mx-2">Reset</button>
             </mat-card-actions>
           </mat-card>
         </form>
       </mat-card-content>
-
-      <mat-card-actions>
-        <button mat-button mat-dialog-close>Back</button>
-        <button mat-button mat-dialog-close cdkFocusInitial>Confirm Slots</button>
-      </mat-card-actions>
     </mat-card>
   </form>

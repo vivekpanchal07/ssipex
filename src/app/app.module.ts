@@ -24,8 +24,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './material/login/login.component';
 import { AngularFireModule} from '@angular/fire/compat';
 import { MapComponent } from './material/map/map.component';
-import { SlotComponent } from './slot/slot.component'
-
+import { SlotComponent } from './slot/slot.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { ParkingBookComponent } from './parking-book/parking-book.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { ParkingviewComponent } from './parking/parkingview/parkingview.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +42,9 @@ import { SlotComponent } from './slot/slot.component'
     LoginComponent,
     MapComponent,
     SlotComponent,
+    TicketComponent,
+    ParkingBookComponent,
+    ParkingviewComponent,
   ],
   entryComponents: [LoginComponent ],
   imports: [
@@ -57,6 +64,8 @@ import { SlotComponent } from './slot/slot.component'
     MatSortModule,
     MatButtonModule,
     MatDialogModule,
+    QRCodeModule,
+    MatTooltipModule,
     AngularFireModule.initializeApp({
         apiKey: "AIzaSyANMwip7EjdUBwQYPO-idCIfvA8L1MGW04",
         authDomain: "ssipex-alpha.firebaseapp.com",

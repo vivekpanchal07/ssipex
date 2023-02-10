@@ -7,11 +7,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
+import { ParkingviewComponent } from 'src/app/parking/parkingview/parkingview.component';
 import { SlotComponent } from 'src/app/slot/slot.component';
 import { LoginComponent } from '../login/login.component';
 import { Parking } from './parkings';
 
 export interface DialogData {
+  [x: string]: any;
   modalParkingId: string;
 }
 @Component({
@@ -26,7 +28,6 @@ export class AngMaterialComponent implements OnInit {
   editMode: boolean = false;
   currentParkingID:string = "";
   newparking:any;
-
   modalParkingId: string;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -39,7 +40,6 @@ export class AngMaterialComponent implements OnInit {
               private toastr: ToastrService,
               private http: HttpClient,
               private dialog: MatDialog ){
-
 
   }
   ParkingForm = new FormGroup({
@@ -151,6 +151,12 @@ export class AngMaterialComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.isLoading = false;
     })
+  }
+
+  viewParking(id: string,name: string){
+    const dialogRef = this.dialog.open(ParkingviewComponent, {
+      data: {modalParkingId :id,modalParkingName :name}
+    });
   }
 
 }

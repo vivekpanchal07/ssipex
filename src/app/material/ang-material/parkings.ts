@@ -12,3 +12,11 @@ export class User{
   password: string;
   role: string;
 }
+
+export class Slot{
+  id?:string;
+  parkingID:string;
+  name:string;
+  phoneNo:string;
+  vehicleNo:string;
+}

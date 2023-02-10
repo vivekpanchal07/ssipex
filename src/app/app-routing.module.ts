@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngMaterialComponent } from './material/ang-material/ang-material.component';
 import { MapComponent } from './material/map/map.component';
+import { ParkingBookComponent } from './parking-book/parking-book.component';
 import { ParkingaddComponent } from './parking/parkingadd/parkingadd.component';
 import { ParkingeditComponent } from './parking/parkingedit/parkingedit.component';
-import { ParkinghomeComponent } from './parking/parkinghome/parkinghome.component';
 import { ParkinglistComponent } from './parking/parkinglist/parkinglist.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path: 'parkingadd',component:ParkingaddComponent},
   {path: 'parkingedit/:id',component:ParkingeditComponent},
   {path: 'map',component:MapComponent},
+  {path: 'ticket/:id',component:TicketComponent},
+  {path: 'parking/:id',component:ParkingBookComponent}
 
 ];
 
