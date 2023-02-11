@@ -16,6 +16,7 @@ export class User{
 export class Slot{
   id?:string;
   parkingID:string;
+  parkingName:string;
   name:string;
   phoneNo:string;
   vehicleNo:string;

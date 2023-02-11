@@ -32,6 +32,8 @@ import { ParkingviewComponent } from './parking/parkingview/parkingview.componen
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GmapComponent } from './gmap/gmap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HistoryComponent } from './history/history.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ParkingBookComponent,
     ParkingviewComponent,
     GmapComponent,
+    HistoryComponent,
   ],
   entryComponents: [LoginComponent ],
   imports: [
@@ -82,7 +85,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
       }
     )
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -17,21 +18,27 @@ export class SlotComponent implements OnInit {
   otpInputShow = false;
   newSlot: Object;
   allSlots: any[];
+  TimeStamp: string;
 
   constructor(
     public dialogRef: MatDialogRef<SlotComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private http: HttpClient,private router:Router
-    ){}
+    private http: HttpClient,private router:Router,
+    public datepipe: DatePipe
+    ){    }
   SlotForm = new FormGroup({
     parkingId: new FormControl(this.data.modalParkingId),
     name: new FormControl(),
     vehicleNo: new FormControl(),
-    phoneNo: new FormControl()
+    phoneNo: new FormControl(),
+    entryTimeStamp: new FormControl(),
+    exitTimeStamp: new FormControl()
   });
 
   ngOnInit(): void {
-    this.fetchAllSlots()
+    this.TimeStamp = this.datepipe.transform((new Date), 'dd/MM/yyyy h:mm a');
+    this.fetchAllSlots();
+
   }
 
   getOTP(){
@@ -39,14 +46,15 @@ export class SlotComponent implements OnInit {
   }
 
   submit(){
+    this.SlotForm.patchValue({entryTimeStamp: this.TimeStamp});
     console.log(this.SlotForm.value);
     this.http.post('https://ssipex-alpha-default-rtdb.firebaseio.com/slot.json',this.SlotForm.value).
     subscribe(res =>{
       this.newSlot = res;
-      // console.log(this.newparking.name+' added');
     })
     this.dialogRef.close();
     this.router.navigate(['ticket'])
+    this.SlotForm.reset();
   }
 
   getSlotDetailByPhone(phoneNo: string){
