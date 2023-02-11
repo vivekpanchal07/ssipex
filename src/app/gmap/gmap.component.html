@@ -1,0 +1,21 @@
+<google-map height="90%"
+            width="100%"
+            [center]="curloc"
+            [zoom]="zoom"
+            (mapClick)="addMarker($event)">
+            <map-circle [center]="curloc"
+              [radius]="3000"></map-circle>
+  <map-marker [position]="curloc" [options]="markerOptions">
+    <map-info-window #infoWindow="mapInfoWindow">
+      Current Location
+    </map-info-window>
+  </map-marker>
+  <map-marker  #marker="mapMarker" *ngFor="let markerPosition of markerPositions"
+            [position]="{ lat: markerPosition.lat, lng: markerPosition.lng }"
+            [options]="markerOptions"
+            (mapClick)="openInfoWindow(marker, infoWindow)">
+    <map-info-window #infoWindow="mapInfoWindow">
+      {{ markerPosition.name }}
+    </map-info-window>
+  </map-marker>
+</google-map>

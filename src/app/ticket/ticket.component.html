@@ -1,1 +1,40 @@
-
+<mat-card class="col-md-12 " >
+  <h3> Parking Ticket</h3>
+  <mat-card-content >
+    <div  >
+      <img src="../../assets/nav-img/qr.png" alt="QR Image is Present here" style="height: 200px;text-align:center" >
+    </div>
+    <div>
+      <table >
+        <tr>
+          <td>Parking Name:</td>
+          <td>{{parking.pname}}</td>
+        </tr>
+        <tr>
+          <td>Parking Address:</td>
+          <td>{{parking.paddress}}</td>
+        </tr>
+        <tr>
+          <td>Person Name:</td>
+          <td>{{parking.name}}</td>
+        </tr>
+        <tr>
+          <td>Vehicle No.:</td>
+          <td>{{parking.vehicleNo}}</td>
+        </tr>
+        <tr>
+          <td>Phone No.:</td>
+          <td>{{parking.phoneNo}}</td>
+        </tr>
+        <tr>
+          <td>Entering Time:</td>
+          <td>{{parking.enterTime}}</td>
+        </tr>
+        <tr>
+          <td>Exiting Time:</td>
+          <td>-Still in Parking-</td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

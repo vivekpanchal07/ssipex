@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { DialogData } from '../material/ang-material/ang-material.component';
 import { Slot } from '../material/ang-material/parkings';
@@ -20,7 +21,7 @@ export class SlotComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<SlotComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private http: HttpClient
+    private http: HttpClient,private router:Router
     ){}
   SlotForm = new FormGroup({
     parkingId: new FormControl(this.data.modalParkingId),
@@ -44,6 +45,8 @@ export class SlotComponent implements OnInit {
       this.newSlot = res;
       // console.log(this.newparking.name+' added');
     })
+    this.dialogRef.close();
+    this.router.navigate(['ticket'])
   }
 
   getSlotDetailByPhone(phoneNo: string){

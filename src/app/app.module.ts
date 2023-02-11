@@ -30,6 +30,8 @@ import { ParkingBookComponent } from './parking-book/parking-book.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ParkingviewComponent } from './parking/parkingview/parkingview.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GmapComponent } from './gmap/gmap.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TicketComponent,
     ParkingBookComponent,
     ParkingviewComponent,
+    GmapComponent,
   ],
   entryComponents: [LoginComponent ],
   imports: [
@@ -66,6 +69,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     QRCodeModule,
     MatTooltipModule,
+    GoogleMapsModule,
     AngularFireModule.initializeApp({
         apiKey: "AIzaSyANMwip7EjdUBwQYPO-idCIfvA8L1MGW04",
         authDomain: "ssipex-alpha.firebaseapp.com",
